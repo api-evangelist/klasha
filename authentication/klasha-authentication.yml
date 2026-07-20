@@ -1,0 +1,66 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/overview/authentication
+docs: https://developers.klasha.com/overview/authentication
+notes: >-
+  Klasha publishes no OpenAPI, so this profile is read from the documented authentication
+  page rather than derived from securitySchemes. Klasha uses a two-part scheme: a merchant
+  public key sent in the `x-auth-token` header, plus a bearer JWT obtained from a login
+  endpoint. Most privileged endpoints (payout, swap, wallet, virtual accounts) require
+  both headers together.
+summary:
+  types: [apiKey, http]
+  api_key_in: [header]
+  oauth2_flows: []
+  oauth2: false
+  openid_connect: false
+schemes:
+- name: MerchantPublicKey
+  type: apiKey
+  in: header
+  parameter_name: x-auth-token
+  description: >-
+    Merchant public key, generated from the Klasha dashboard under
+    Settings -> Generate API Keys -> Merchant public key. Sent as the value of the
+    `x-auth-token` request header on every endpoint that requires it.
+  obtain: https://dashboard.klasha.com/settings/keys
+  source: https://developers.klasha.com/overview/authentication
+- name: BearerToken
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  description: >-
+    Bearer token used as the value of the `Authorization` header. Issued by the account
+    login endpoint in exchange for the account email (`username`) and `password`.
+  token_endpoint:
+    method: POST
+    path: /auth/account/v2/login
+    base: '{{env_url}}'
+    request_fields:
+    - {name: username, type: string, required: true, description: Your account email}
+    - {name: password, type: string, required: true, description: Account password}
+    response_field: data.token
+  source: https://developers.klasha.com/overview/authentication
+combined_usage:
+  description: >-
+    Payout, swap, wallet-balance, virtual-account and webhook-resend requests are documented
+    with all three headers set together.
+  headers:
+  - {name: Content-Type, value: application/json}
+  - {name: x-auth-token, value: merchant public key}
+  - {name: Authorization, value: 'Bearer {{token}}'}
+payload_encryption:
+  required_for: [payout, momo payout, swap]
+  algorithm: Triple-DES (3DES)
+  mode: CBC
+  padding: PKCS5Padding
+  encoding: Base64
+  envelope_field: message
+  description: >-
+    Transfer and swap request payloads must be encrypted before submission and sent as
+    a single `message` field containing the Base64 ciphertext.
+  source: https://developers.klasha.com/transfers/payout
+auth_errors:
+- {status: 400, message: public key is required}
+- {status: 400, message: Authorization required}
+- {status: 400, message: 'Invalid email or password.', error: wrong login details}
