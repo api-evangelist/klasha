@@ -1,0 +1,38 @@
+generated: '2026-07-19'
+method: generated
+source: https://developers.klasha.com
+notes: >-
+  Klasha publishes no OpenAPI and no provider-authored agent skills or AGENTS.md, so each
+  skill is grounded in the HTTP endpoints Klasha documents rather than in operationIds.
+  Every endpoint cited appears verbatim in the Klasha documentation.
+skills:
+- file: klasha-collect-card-payment.md
+  name: Collect a card payment with Klasha
+  api: https://developers.klasha.com/accepting-payments/payments-api
+  operations:
+  - POST /pay/aggregators/{gateway}/card/payment/v2
+  - POST /pay/aggregators/{gateway}/charge/card/v2
+  - POST /pay/aggregators/{gateway}/validate/card/v2
+  - POST /nucleus/tnx/merchant/status
+- file: klasha-payout-to-africa.md
+  name: Pay out to an African bank account or mobile money wallet
+  api: https://developers.klasha.com/transfers/payout
+  operations:
+  - GET /nucleus/business/api/wallets
+  - GET /wallet/merchant/bank/transfer/request/banks/{currency}
+  - POST /wallet/merchant/{businessId}/bank/transfer/v2/request
+- file: klasha-virtual-account-collection.md
+  name: Collect funds through a Klasha virtual account
+  api: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+  operations:
+  - POST /wallet/virtual/v3/business/create/account
+  - GET /wallet/virtual/v2/account/{email}
+  - POST /nucleus/tnx/collection/status
+- file: klasha-swap-wallet-currency.md
+  name: Swap currency between Klasha merchant wallets
+  api: https://developers.klasha.com/transfers/swap-api
+  operations:
+  - POST /wallet/swap/generate/quote
+  - POST /wallet/swap/initiate
+  - GET /wallet/swap/fetch/by/reference/{transactionReference}
+  - GET /wallet/swap/fetch/by/token/{quoteToken}

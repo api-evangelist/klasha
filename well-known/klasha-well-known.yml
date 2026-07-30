@@ -1,0 +1,50 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of the /.well-known/ surface on every Klasha host in apis.yml
+result: none
+notes: >-
+  No /.well-known/ discovery documents are published on any Klasha host. dashboard.klasha.com
+  returns HTTP 200 with `Content-Type: text/html` for every probed path because it is a
+  single-page application that serves its index.html as a catch-all; these are soft 404s,
+  not real discovery documents, and no file was saved. The live gateway (gate.klasapps.com)
+  rejects unauthenticated requests with 403 and the sandbox gateway (dev.kcookery.com)
+  with 401, so neither confirms nor denies a discovery surface.
+hosts:
+- host: https://klasha.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://developers.klasha.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://gate.klasapps.com
+  note: production API gateway; all unauthenticated requests return 403
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+- host: https://dev.kcookery.com
+  note: sandbox API gateway; all unauthenticated requests return 401
+  documents:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+- host: https://dashboard.klasha.com
+  note: SPA catch-all returns text/html for unknown paths; 200s below are soft 404s
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 200, soft_404: true, content_type: text/html}
+  - {path: /.well-known/oauth-authorization-server, status: 200, soft_404: true, content_type: text/html}
+  - {path: /.well-known/api-catalog, status: 200, soft_404: true, content_type: text/html}
+  - {path: /.well-known/ai-plugin.json, status: 404}

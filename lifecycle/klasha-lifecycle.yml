@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/misc/api-status + https://developers.klasha.com/overview/parameters
+versioning:
+  scheme: uri-path
+  description: >-
+    Versions are embedded as path segments on individual endpoints rather than as a single
+    global API version. Observed segments across the documented surface are v2 and v3
+    (for example /pay/aggregators/{gateway}/card/payment/v2,
+    /pay/aggregators/{gateway}/banktransfer/v3, /nucleus/refund/initiate/v3,
+    /wallet/virtual/v3/business/create/account, /auth/account/v2/login).
+  current: mixed (v2 and v3 per endpoint)
+  docs: https://developers.klasha.com/overview/parameters
+  policy_url: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  notes: >-
+    Klasha publishes no deprecation or sunset policy and does not document RFC 8594
+    Sunset/Deprecation headers. Payout and mobile-money endpoints are documented in a
+    "new encryption" generation alongside older variants, but no formal retirement
+    timeline is published.
+migrations:
+- name: new encryption payouts
+  description: >-
+    Per-currency payout and mobile-money payout endpoints are documented as "(new
+    encryption)" variants using Triple-DES encrypted payloads.
+  docs: https://developers.klasha.com/transfers/payout
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.klasha.com/
+status_page_notes: >-
+  Klasha directs developers to https://status.klasha.com/ for API status updates and
+  offers subscription to notifications.
+changelog: null
+changelog_notes: Klasha publishes no dated API changelog or release-notes page.
+deprecated_operations: []

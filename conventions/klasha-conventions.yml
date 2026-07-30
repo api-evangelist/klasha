@@ -1,0 +1,89 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/overview/parameters + /overview/authentication + /overview/errors + /misc/transaction-status + /misc/webhook
+notes: >-
+  Derived from Klasha's published documentation; Klasha ships no OpenAPI, so nothing here
+  is inferred from a machine-readable spec. Absent conventions are recorded as absent
+  rather than assumed.
+protocol:
+  style: REST-ish RPC over HTTPS
+  content_type: application/json
+  method_use: >-
+    Most operations, including lookups such as transaction status, are POST. GET is used
+    for bank-code lookup, wallet balance, refund status, swap fetch and webhook resend.
+authentication:
+  style: merchant public key header plus bearer JWT
+  api_key_header: x-auth-token
+  bearer_header: Authorization
+  artifact: authentication/klasha-authentication.yml
+  docs: https://developers.klasha.com/overview/authentication
+payload_encryption:
+  applies_to: [payout, momo payout, swap]
+  algorithm: Triple-DES/CBC with PKCS5Padding, Base64 encoded
+  envelope_field: message
+  docs: https://developers.klasha.com/transfers/payout
+idempotency:
+  supported: false
+  idempotency_key_header: null
+  notes: >-
+    Klasha documents no idempotency key header and makes no replay-safety guarantee. It
+    does require a caller-supplied unique transaction reference (`tx_ref`, echoed back as
+    `tnxRef`) in UUID format or another guaranteed-unique value, and a `requestId` on
+    payout payloads, but the documentation describes these as correlation references for
+    lookup and reconciliation, not as idempotency keys. Callers should verify final state
+    with the transaction-status endpoint before retrying.
+  reference_field:
+    request: tx_ref
+    response: tnxRef
+    format: UUID or other guaranteed-unique value
+    docs: https://developers.klasha.com/overview/parameters
+pagination:
+  supported: false
+  notes: No pagination scheme is documented on any Klasha endpoint.
+field_expansion:
+  supported: false
+sparse_fields:
+  supported: false
+metadata:
+  supported: partial
+  fields: [description, narration]
+  notes: >-
+    Free-text `description` (payout) and `narration` (webhook payloads) carry caller
+    context; there is no structured metadata map.
+request_tracing:
+  request_id_header: null
+  notes: >-
+    No request-id or correlation header is documented. The caller-supplied `tx_ref` is
+    the practical correlation handle across the charge, webhook and status-check surfaces.
+versioning:
+  scheme: uri-path per endpoint (v2, v3)
+  artifact: lifecycle/klasha-lifecycle.yml
+error_envelope:
+  format: custom
+  rfc9457: false
+  shapes: [status/message/data, status/message, message/error/data, error]
+  http_status_use: >-
+    Documented failures are returned with HTTP 400 regardless of failure class; the
+    envelope `message`/`error` text carries the discriminating detail.
+  artifact: errors/klasha-problem-types.yml
+rate_limiting:
+  documented: false
+  headers: null
+  notes: Klasha publishes no rate limits or rate-limit response headers.
+async_and_settlement:
+  verification: >-
+    Klasha advises verifying the final status of a charge with the transaction-status
+    endpoint (POST /nucleus/tnx/merchant/status, body {"tnxRef": ...}) before giving
+    value, confirming both the amount and the destination currency.
+  webhooks: asyncapi/klasha-webhooks.yml
+  status_values: [successful, failed]
+  docs: https://developers.klasha.com/misc/transaction-status
+currency_model:
+  dual_currency: >-
+    Transactions carry a source and destination pair (sourceCurrency/sourceAmount and
+    destinationCurrency/destinationAmount) with an applied `rate`, reflecting the
+    cross-border collection model.
+  gateway_variable: >-
+    The `{{gateway}}` path variable on payment endpoints selects the currency rail
+    (for example NGN, ZAR, USD).
+  docs: https://developers.klasha.com/overview/countries-and-payment-methods

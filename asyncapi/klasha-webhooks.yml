@@ -1,0 +1,86 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/misc/webhook
+docs: https://developers.klasha.com/misc/webhook
+spec_type: Webhooks
+asyncapi_published: false
+notes: >-
+  Klasha publishes no AsyncAPI document. It does document a real webhook surface with a
+  named event envelope and a resend endpoint, captured here verbatim from the docs. No
+  event schema, signature scheme or retry policy is published.
+delivery:
+  configuration: >-
+    Webhook notification URLs are configured on the Klasha merchant dashboard, not over
+    the API.
+  transport: HTTPS POST to the merchant endpoint
+  envelope:
+    fields: [event, data]
+    description: >-
+      Every notification is a JSON object with a string `event` naming the event type and
+      a `data` object carrying the payload.
+  signature_verification: none published
+  retry_policy: none published
+  replay:
+    endpoint:
+      method: GET
+      path: /nucleus/tnx/webhook
+      query: {reference: '{{tx_ref}}'}
+      base: '{{env_url}}'
+    description: >-
+      Resends webhooks from failed sending queues to the merchant server for a given
+      transaction reference.
+    headers:
+    - {name: Content-Type, value: application/json}
+    - {name: x-auth-token, value: merchant public key}
+    - {name: Authorization, value: 'Bearer {{token}}'}
+    response: {message: 'webhook sent for reference {{tx_ref}}', error: null, data: null}
+events:
+- name: charge.completed
+  group: Collections
+  description: A payment collection reached a final state.
+  status_values: [successful, failed]
+  payload_fields:
+  - createdAt
+  - narration
+  - destinationCurrency
+  - sourceAmount
+  - sourceCurrency
+  - tnxRef
+  - status
+  - destinationAmount
+  - customer
+  variants:
+  - name: charge.completed (payment link)
+    additional_fields: [subMerchantId, paylinkId]
+    description: >-
+      Emitted for payment-link collections; adds the sub-merchant and paylink identifiers
+      and uses a `paylink-` prefixed transaction reference.
+- name: payout
+  group: Payout
+  description: A payout to a bank account or mobile money wallet reached a final state.
+  status_values: [successful, failed]
+  payload_fields:
+  - reference
+  - createdAt
+  - amount
+  - accountName
+  - narration
+  - name
+  - currency
+  - bankName
+  - accountNumber
+  - status
+- name: refund.completed
+  group: Refund
+  description: A refund reached a final state.
+  status_values: [successful, failed]
+  payload_fields:
+  - createdAt
+  - refundType
+  - refundRef
+  - amount
+  - completeMessage
+  - tnxRef
+  - status
+  - customer
+  notes: '`refundType` is documented with the value `partial`.'

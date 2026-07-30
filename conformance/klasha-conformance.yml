@@ -1,0 +1,67 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.klasha.com/compliance + https://developers.klasha.com/overview/authentication
+notes: >-
+  Compliance certifications are taken from Klasha's own published compliance page.
+  Technical standards are assessed against the published documentation, since Klasha
+  ships no OpenAPI to derive from. `conforms: false` records an absence, not a defect.
+standards:
+- id: pci-dss
+  conforms: true
+  evidence: >-
+    "Klasha has been audited by an independent PCI Qualified Security Assessor (QSA) and
+    has been granted PCI-DSS compliance."
+  source: https://www.klasha.com/compliance
+- id: iso-27001
+  conforms: true
+  evidence: '"Klasha is ISO 27001 certified" (ISO/IEC 27001 information security management system).'
+  source: https://www.klasha.com/compliance
+- id: 3d-secure
+  conforms: true
+  evidence: >-
+    Card payment flows document 3DS authentication, including dedicated 3DS test cards
+    and a validate-charge step.
+  source: https://developers.klasha.com/accepting-payments/test-payments
+- id: tls-1.2-plus
+  conforms: true
+  evidence: >-
+    Live probe: developers.klasha.com and www.klasha.com negotiate TLSv1.3;
+    gate.klasapps.com negotiates TLSv1.2.
+  source: security/klasha-domain-security.yml
+- id: oauth2
+  conforms: false
+  evidence: >-
+    Authentication is a merchant public key header plus a username/password-issued bearer
+    JWT; no OAuth 2.0 authorization server, flows or scopes are published.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: >-
+    Errors use custom status/message/data envelopes returned with HTTP 400, not
+    application/problem+json.
+  source: https://developers.klasha.com/overview/errors
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation or sunset policy or headers are published.
+- id: idempotency-keys
+  conforms: false
+  evidence: >-
+    No idempotency key header is documented; a caller-supplied unique transaction
+    reference exists but carries no documented replay guarantee.
+- id: json-api
+  conforms: false
+- id: openapi
+  conforms: false
+  evidence: Klasha publishes no OpenAPI or Swagger description.
+- id: asyncapi
+  conforms: false
+  evidence: >-
+    A documented webhook surface exists (charge.completed, payout, refund.completed) but
+    no AsyncAPI document is published.
+- id: psd2
+  conforms: false
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false

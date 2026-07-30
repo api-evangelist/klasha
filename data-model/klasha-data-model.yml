@@ -1,0 +1,132 @@
+generated: '2026-07-19'
+method: searched
+source: documented request/response objects across https://developers.klasha.com
+notes: >-
+  Klasha publishes no OpenAPI, so this entity graph is read from the request and response
+  examples in the documentation rather than derived from schema $refs. Fields listed are
+  those Klasha actually shows in its examples.
+render: null
+entities:
+- name: Transaction
+  aliases: [charge]
+  description: A payment collection, identified by the caller-supplied transaction reference.
+  identifier: {field: tnxRef, alias: txRef, request_field: tx_ref, format: UUID or other guaranteed-unique value}
+  fields:
+  - {name: tnxRef, type: string}
+  - {name: status, type: string, values: [successful, failed]}
+  - {name: sourceCurrency, type: string}
+  - {name: sourceAmount, type: number}
+  - {name: destinationCurrency, type: string}
+  - {name: destinationAmount, type: number}
+  - {name: narration, type: string}
+  - {name: createdAt, type: string}
+  source: https://developers.klasha.com/misc/transaction-status
+- name: Customer
+  description: The payer attached to a transaction or refund.
+  identifier: {field: id, type: integer}
+  fields:
+  - {name: id, type: integer}
+  - {name: name, type: string}
+  - {name: email, type: string}
+  - {name: phone, type: string}
+  - {name: createdAt, type: string}
+  - {name: updatedAt, type: string}
+  source: https://developers.klasha.com/misc/transaction-status
+- name: Refund
+  description: A full or partial reversal of a transaction.
+  identifier: {field: refundRef, type: string}
+  fields:
+  - {name: refundRef, type: string}
+  - {name: refundType, type: string, values: [partial]}
+  - {name: amount, type: number}
+  - {name: tnxRef, type: string}
+  - {name: status, type: string}
+  - {name: completeMessage, type: string}
+  - {name: createdAt, type: string}
+  source: https://developers.klasha.com/misc/webhook
+- name: Payout
+  description: A disbursement to a bank account or mobile money wallet.
+  identifier: {field: reference, type: string}
+  fields:
+  - {name: reference, type: string}
+  - {name: requestId, type: string}
+  - {name: amount, type: number}
+  - {name: currency, type: string}
+  - {name: country, type: string}
+  - {name: bankCode, type: string}
+  - {name: bankName, type: string}
+  - {name: accountNumber, type: string}
+  - {name: accountName, type: string}
+  - {name: description, type: string}
+  - {name: narration, type: string}
+  - {name: status, type: string}
+  - {name: createdAt, type: string}
+  source: https://developers.klasha.com/transfers/payout
+- name: Swap
+  description: A conversion between two merchant wallets at internal Klasha rates.
+  identifier: {field: transactionReference, type: string}
+  fields:
+  - {name: id}
+  - {name: sourceCurrency}
+  - {name: sourceAmount}
+  - {name: destinationCurrency}
+  - {name: destinationAmount}
+  - {name: sourceFees}
+  - {name: destinationFees}
+  - {name: rate}
+  - {name: transactionStatus}
+  - {name: transactionReference}
+  - {name: quoteToken}
+  - {name: createdAt}
+  - {name: updatedAt}
+  source: https://developers.klasha.com/transfers/swap-api
+- name: VirtualAccount
+  description: A bank account provisioned on demand to collect funds for a merchant.
+  identifier: {field: accountNumber, type: string}
+  currencies: [NGN, GHS]
+  fields:
+  - {name: id}
+  - {name: accountNumber}
+  - {name: accountName}
+  - {name: bankName}
+  - {name: bankCode}
+  - {name: currency}
+  - {name: businessId}
+  - {name: email}
+  - {name: enabled}
+  - {name: orderRef}
+  - {name: txRef}
+  - {name: flwRef}
+  - {name: createdAt}
+  - {name: updatedAt}
+  source: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+- name: Wallet
+  description: A merchant currency balance, funded by collections, virtual accounts or swaps.
+  currencies: [NGN, KES, ZAR, USD, ZMW, GHS]
+  source: https://developers.klasha.com/overview/countries-and-payment-methods
+- name: Business
+  aliases: [merchant]
+  description: The merchant account that owns keys, wallets, virtual accounts and payouts.
+  identifier: {field: businessId, type: string}
+  source: https://developers.klasha.com/accepting-payments/klasha-inline
+- name: SubMerchant
+  description: A merchant nested under a business, addressable on payment links.
+  identifier: {field: subMerchantId, type: string}
+  source: https://developers.klasha.com/misc/webhook
+- name: PaymentLink
+  description: A hosted payment page collecting into a merchant or sub-merchant account.
+  identifier: {field: paylinkId, type: string}
+  source: https://developers.klasha.com/accepting-payments/payment-link/payment-link-api
+relationships:
+- {from: Transaction, to: Customer, kind: has_one, via: customer}
+- {from: Transaction, to: Refund, kind: has_many, via: tnxRef}
+- {from: Refund, to: Transaction, kind: belongs_to, via: tnxRef}
+- {from: Refund, to: Customer, kind: has_one, via: customer}
+- {from: Business, to: Wallet, kind: has_many, via: businessId}
+- {from: Business, to: VirtualAccount, kind: has_many, via: businessId}
+- {from: Business, to: SubMerchant, kind: has_many, via: subMerchantId}
+- {from: Business, to: Payout, kind: has_many, via: businessId}
+- {from: VirtualAccount, to: Business, kind: belongs_to, via: businessId}
+- {from: PaymentLink, to: SubMerchant, kind: belongs_to, via: subMerchantId}
+- {from: PaymentLink, to: Transaction, kind: has_many, via: paylinkId}
+- {from: Swap, to: Wallet, kind: belongs_to, via: sourceCurrency/destinationCurrency}

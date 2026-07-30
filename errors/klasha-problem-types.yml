@@ -1,0 +1,64 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/overview/errors
+docs: https://developers.klasha.com/overview/errors
+format: custom
+rfc9457: false
+notes: >-
+  Klasha does not use RFC 9457 problem+json. It publishes three documented error envelope
+  shapes, all returned with HTTP 400, plus per-endpoint error bodies observed in the
+  documented response examples. There is no numeric error-code registry.
+envelopes:
+- name: standard
+  fields: [status, message, data]
+  example: {status: error, message: public key is required, data: null}
+- name: bad-request
+  fields: [status, message]
+  example: {status: Bad Request, message: Bad Request}
+- name: auth-login
+  fields: [message, error, data]
+  example: {message: 'Invalid email or password.', error: wrong login details, data: null}
+- name: transaction-status
+  fields: [error]
+  example: {error: Transaction not found.}
+problems:
+- status: 400
+  title: Public key missing
+  detail: public key is required
+  envelope: standard
+  cause: The `x-auth-token` header was not supplied.
+  remediation: >-
+    Send your merchant public key in the `x-auth-token` header. Generate it at
+    Dashboard -> Settings -> Generate API Keys -> Merchant public key.
+  source: https://developers.klasha.com/overview/errors
+- status: 400
+  title: Authorization required
+  detail: Authorization required
+  envelope: standard
+  cause: 'The `Authorization: Bearer <token>` header was missing or invalid.'
+  remediation: >-
+    Obtain a bearer token from POST {{env_url}}/auth/account/v2/login and send it in the
+    `Authorization` header.
+  source: https://developers.klasha.com/overview/errors
+- status: 400
+  title: Bad Request
+  detail: Bad Request
+  envelope: bad-request
+  cause: Malformed or invalid request payload.
+  remediation: Validate the request body against the documented parameters for the endpoint.
+  source: https://developers.klasha.com/overview/errors
+- status: 400
+  title: Invalid login credentials
+  detail: 'Invalid email or password.'
+  error: wrong login details
+  envelope: auth-login
+  source: https://developers.klasha.com/overview/authentication
+- status: 400
+  title: Transaction not found
+  detail: Transaction not found.
+  envelope: transaction-status
+  cause: The supplied `tnxRef` does not match a known transaction.
+  remediation: >-
+    Use the transaction reference returned by the charge initiation call. References
+    should be UUID-format or otherwise guaranteed unique.
+  source: https://developers.klasha.com/misc/transaction-status

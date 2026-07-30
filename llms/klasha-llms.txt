@@ -1,0 +1,65 @@
+# API Documentation
+
+## API Documentation
+
+- [Welcome!](https://developers.klasha.com/welcome.md): Welcome to Klasha Documentation
+- [Getting Started](https://developers.klasha.com/integrating-klasha/getting-started.md)
+- [Prerequisites](https://developers.klasha.com/integrating-klasha/prerequisites.md)
+- [Integration Checklist](https://developers.klasha.com/integrating-klasha/integration-checklist.md): This highlights the integration process of Klasha APIs with businesses.
+- [Wrap Up](https://developers.klasha.com/integrating-klasha/wrap-up.md)
+- [Introduction](https://developers.klasha.com/overview/introduction.md)
+- [Authentication](https://developers.klasha.com/overview/authentication.md): All our endpoints are secured and requests must be authenticated by passing your merchant public key or Bearer token in the request header.
+- [Parameters](https://developers.klasha.com/overview/parameters.md): This page shows the list of template variables used across the documentation and their values.
+- [Errors](https://developers.klasha.com/overview/errors.md)
+- [Countries & Payment Methods](https://developers.klasha.com/overview/countries-and-payment-methods.md)
+- [Test Payments](https://developers.klasha.com/accepting-payments/test-payments.md): You can use the following test cards details to test different payment channels.
+- [Payments API](https://developers.klasha.com/accepting-payments/payments-api.md): Summary
+- [Mobile money](https://developers.klasha.com/accepting-payments/payments-api/mobile-money.md): Collect payments via our mobile money api
+- [Pay with Capitec Pay](https://developers.klasha.com/accepting-payments/payments-api/pay-with-capitec-pay.md)
+- [USSD](https://developers.klasha.com/accepting-payments/payments-api/ussd.md): The Klasha USSD Payment API allows businesses to accept payments via USSD codes, a method especially effective in regions with limited access to the internet.
+- [Payment Link](https://developers.klasha.com/accepting-payments/payment-link.md): We can now accept payments through our payment link.
+- [Dashboard](https://developers.klasha.com/accepting-payments/payment-link/dashboard.md): Collect payments from your customers using payment link.
+- [Payment Link API](https://developers.klasha.com/accepting-payments/payment-link/payment-link-api.md): Collect payments from your customers using payment link.
+- [Klasha Inline](https://developers.klasha.com/accepting-payments/klasha-inline.md): Embed Klasha into your website using our inline JavaScript integration.
+- [HTML Checkout](https://developers.klasha.com/accepting-payments/html-checkout.md): Collect payments from your customers using Klasha inline in your HTML file.
+- [Plugins](https://developers.klasha.com/plugins-and-sdks/plugins.md): Integrate Klasha into your e-commerce platforms with our readymade plugins
+- [Mobile SDKs](https://developers.klasha.com/plugins-and-sdks/mobile-sdks.md): Accept payments from your mobile application with Klasha using our mobile SDKs
+- [Web SDKs](https://developers.klasha.com/plugins-and-sdks/web-sdks.md): Accept payments from your web application with Klasha using our web SDKs
+- [Transaction Status](https://developers.klasha.com/misc/transaction-status.md): Verify a transaction.
+- [Webhook](https://developers.klasha.com/misc/webhook.md): Webhook response
+- [API Status](https://developers.klasha.com/misc/api-status.md)
+- [One-time Payments](https://developers.klasha.com/features/one-time-payments.md): One-time plans
+- [Recurrent Payment](https://developers.klasha.com/features/recurrent-payment.md): Recurrent plans
+- [Payout](https://developers.klasha.com/transfers/payout.md)
+- [ZAR Payout (new encryption)](https://developers.klasha.com/transfers/payout/zar-payout-new-encryption.md)
+- [NGN Payout (new encryption)](https://developers.klasha.com/transfers/payout/ngn-payout-new-encryption.md)
+- [GHS Payout (new encryption)](https://developers.klasha.com/transfers/payout/ghs-payout-new-encryption.md)
+- [KES Payout (new encryption)](https://developers.klasha.com/transfers/payout/kes-payout-new-encryption.md)
+- [ZMW Payout (new encryption)](https://developers.klasha.com/transfers/payout/zmw-payout-new-encryption.md)
+- [TZS Payout (new encryption)](https://developers.klasha.com/transfers/payout/tzs-payout-new-encryption.md)
+- [CNY Payout (new encryption)](https://developers.klasha.com/transfers/payout/cny-payout-new-encryption.md): This documentation provides a comprehensive guide to integrating with Klasha's CNY Payout service. You can use this API to send money to China via various methods, including wallets (Alipay, WeChat),
+- [MoMo Payout](https://developers.klasha.com/transfers/momo-payout.md)
+- [ZMW (new encryption)](https://developers.klasha.com/transfers/momo-payout/zmw-new-encryption.md)
+- [RWF (new encryption)](https://developers.klasha.com/transfers/momo-payout/rwf-new-encryption.md)
+- [UGX (new encryption)](https://developers.klasha.com/transfers/momo-payout/ugx-new-encryption.md)
+- [GHS (new encryption)](https://developers.klasha.com/transfers/momo-payout/ghs-new-encryption.md)
+- [NGN (new encryption)](https://developers.klasha.com/transfers/momo-payout/ngn-new-encryption.md)
+- [XOF Ivory Coast (new encryption)](https://developers.klasha.com/transfers/momo-payout/xof-ivory-coast-new-encryption.md)
+- [XOF Benin (new encryption)](https://developers.klasha.com/transfers/momo-payout/xof-benin-new-encryption.md)
+- [XOF Senegal (new encryption)](https://developers.klasha.com/transfers/momo-payout/xof-senegal-new-encryption.md)
+- [XOF Burkina Faso (new encryption)](https://developers.klasha.com/transfers/momo-payout/xof-burkina-faso-new-encryption.md)
+- [XAF Cameroon (new encryption)](https://developers.klasha.com/transfers/momo-payout/xaf-cameroon-new-encryption.md)
+- [XAF Gabon (new encryption)](https://developers.klasha.com/transfers/momo-payout/xaf-gabon-new-encryption.md)
+- [XAF Republic of the Congo (new encryption)](https://developers.klasha.com/transfers/momo-payout/xaf-republic-of-the-congo-new-encryption.md)
+- [CDF Democratic Republic of the Congo (new encryption)](https://developers.klasha.com/transfers/momo-payout/cdf-democratic-republic-of-the-congo-new-encryption.md)
+- [TZS (new encryption)](https://developers.klasha.com/transfers/momo-payout/tzs-new-encryption.md)
+- [MWK (new encryption)](https://developers.klasha.com/transfers/momo-payout/mwk-new-encryption.md)
+- [MZN (new encryption)](https://developers.klasha.com/transfers/momo-payout/mzn-new-encryption.md)
+- [KES (new encryption)](https://developers.klasha.com/transfers/momo-payout/kes-new-encryption.md)
+- [SLL (new encryption)](https://developers.klasha.com/transfers/momo-payout/sll-new-encryption.md)
+- [Klasha Wire API](https://developers.klasha.com/transfers/klasha-wire-api.md)
+- [Swap API](https://developers.klasha.com/transfers/swap-api.md): Our Swap API give merchants the ability to swap funds between their wallets via API using our internal Klasha rates.
+- [Currency Coverage](https://developers.klasha.com/transfers/currency-coverage.md)
+- [Virtual Account Creation](https://developers.klasha.com/bank-account-collection/virtual-account-creation.md): Create Virtual Accounts (VA) on demand, receive funds from customers via these accounts and get notification on its usage.
+- [VA balance and statement](https://developers.klasha.com/bank-account-collection/va-balance-and-statement.md)
+- [Business Identification Service](https://developers.klasha.com/bank-account-collection/business-identification-service.md)

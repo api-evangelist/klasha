@@ -1,0 +1,121 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/plugins-and-sdks/web-sdks + https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+notes: >-
+  Klasha links these client libraries from its own SDK documentation pages. Several
+  npm packages are published from the personal `dansteve` GitHub account rather than
+  the `klasha-apps` account, but Klasha documents them as its official web/mobile SDKs,
+  so they are recorded as official with the publishing repo noted. Registry metadata
+  (latest version, publish date) was read from the public registry APIs on 2026-07-19.
+packages:
+- language: javascript
+  registry: npm
+  name: klasha-pay
+  url: https://www.npmjs.com/package/klasha-pay
+  install: npm install klasha-pay
+  version: 2.2.7
+  published: '2025-03-13'
+  official: true
+  role: React SDK
+  repository: https://github.com/klasha-apps/klasha-react
+  docs: https://developers.klasha.com/plugins-and-sdks/web-sdks
+- language: javascript
+  registry: npm
+  name: angular-klasha
+  url: https://www.npmjs.com/package/angular-klasha
+  install: npm install angular-klasha
+  version: 0.0.1
+  published: '2021-07-15'
+  official: true
+  role: Angular SDK (also documented as the Ionic SDK)
+  repository: https://github.com/dansteve/angular-klasha
+  docs: https://developers.klasha.com/plugins-and-sdks/web-sdks
+- language: javascript
+  registry: npm
+  name: vue-klasha
+  url: https://www.npmjs.com/package/vue-klasha
+  install: npm install vue-klasha
+  version: 0.0.5
+  published: '2021-11-16'
+  official: true
+  role: Vue 2 SDK
+  repository: https://github.com/Dansteve/vue-klasha
+  docs: https://developers.klasha.com/plugins-and-sdks/web-sdks
+- language: javascript
+  registry: npm
+  name: vue3-klasha
+  url: https://www.npmjs.com/package/vue3-klasha
+  install: npm install vue3-klasha
+  version: 0.0.5
+  published: '2021-11-16'
+  official: true
+  role: Vue 3 SDK
+  repository: https://github.com/dansteve/vue3-klasha
+  docs: https://developers.klasha.com/plugins-and-sdks/web-sdks
+- language: javascript
+  registry: npm
+  name: react-native-klasha-webview
+  url: https://www.npmjs.com/package/react-native-klasha-webview
+  install: npm install react-native-klasha-webview
+  version: 0.0.1
+  published: '2021-07-16'
+  official: true
+  role: React Native SDK
+  repository: https://github.com/dansteve/react-native-klasha-webview
+  docs: https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+- language: dart
+  registry: pub.dev
+  name: klasha_flutter_checkout
+  url: https://pub.dev/packages/klasha_flutter_checkout
+  install: flutter pub add klasha_flutter_checkout
+  official: true
+  role: Flutter SDK
+  repository: https://github.com/klasha-apps/klasha-flutter
+  docs: https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+- language: swift
+  registry: cocoapods
+  name: klashapay
+  url: https://cocoapods.org/pods/klashapay
+  install: pod 'klashapay'
+  official: true
+  role: iOS SDK
+  repository: https://github.com/klasha-apps/ios
+  docs: https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+- language: kotlin
+  registry: github
+  name: klasha-android
+  url: https://github.com/klasha-apps/klasha-android
+  official: true
+  role: Android SDK (distributed from GitHub; no Maven Central coordinates published)
+  docs: https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+registries_checked:
+- registry: npm
+  result: found
+- registry: pub.dev
+  result: found
+- registry: cocoapods
+  result: found
+- registry: pypi
+  result: none
+- registry: maven-central
+  result: none
+- registry: nuget
+  result: none
+- registry: pkg.go.dev
+  result: none
+- registry: rubygems
+  result: none
+- registry: packagist
+  result: none
+- registry: crates.io
+  result: none
+ecommerce_plugins:
+  docs: https://developers.klasha.com/plugins-and-sdks/plugins
+  platforms:
+  - BigCommerce
+  - WooCommerce
+  - OpenCart
+  - Magento 2
+  - Ecwid
+  - Wix
+  - Weebly

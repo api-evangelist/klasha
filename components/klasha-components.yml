@@ -1,0 +1,69 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/accepting-payments/klasha-inline + /plugins-and-sdks/web-sdks + /plugins-and-sdks/mobile-sdks
+docs: https://developers.klasha.com/accepting-payments/klasha-inline
+notes: >-
+  Client-side and embeddable checkout surfaces, distinct from the server-side integration
+  and from the package listings in packages/klasha-packages.yml.
+families:
+- name: Klasha Inline
+  kind: hosted checkout popup
+  description: >-
+    A drop-in JavaScript checkout embedded by adding a script tag to the page head and
+    invoking a client object. Renders a Klasha-hosted payment pop-up and returns the
+    outcome to a caller-supplied callback.
+  loader: https://js.klasha.com/pay.js
+  embed: '<script type="text/javascript" src="https://js.klasha.com/pay.js"></script>'
+  entrypoint: KlashaClient
+  init_signature:
+  - merchantKey
+  - businessId
+  - amount
+  - description
+  - callback
+  - currency
+  - destinationCurrency
+  - paymentKit
+  - environment
+  payment_kit_fields:
+  - tx_ref
+  - fullname
+  - firstName
+  - lastName
+  - email
+  - phone_number
+  - businessId
+  - merchantKey
+  - amount
+  - sourceAmount
+  - rate
+  callback_payload: {amount: number, currency: string, status: string, tnxRef: string}
+  environment_flag: 'true for dev, false for production'
+  docs: https://developers.klasha.com/accepting-payments/klasha-inline
+- name: HTML Checkout
+  kind: markup-only checkout
+  description: >-
+    Collect payments using Klasha Inline directly from an HTML file with no framework.
+  docs: https://developers.klasha.com/accepting-payments/html-checkout
+- name: Payment Links
+  kind: hosted payment page
+  description: >-
+    No-code hosted payment pages generated from the dashboard or over the Payment Link
+    API, usable by merchants and sub-merchants.
+  docs: https://developers.klasha.com/accepting-payments/payment-link
+- name: Web framework components
+  kind: framework wrappers around Klasha Inline
+  frameworks: [Angular, React, Vue 2, Vue 3]
+  packages: [angular-klasha, klasha-pay, vue-klasha, vue3-klasha]
+  docs: https://developers.klasha.com/plugins-and-sdks/web-sdks
+- name: Mobile checkout components
+  kind: native and hybrid drop-in payment screens
+  platforms: [iOS, Android, Flutter, Ionic, React Native]
+  description: >-
+    Customizable UI screens and elements that can be used out of the box to collect
+    payments inside a mobile app.
+  docs: https://developers.klasha.com/plugins-and-sdks/mobile-sdks
+- name: E-commerce plugins
+  kind: storefront plugins
+  platforms: [BigCommerce, WooCommerce, OpenCart, Magento 2, Ecwid, Wix, Weebly]
+  docs: https://developers.klasha.com/plugins-and-sdks/plugins

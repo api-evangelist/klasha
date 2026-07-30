@@ -1,0 +1,113 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: documented endpoints across https://developers.klasha.com
+notes: >-
+  Klasha publishes no hosted or remote MCP server; a search of its docs, the npm registry
+  and the public MCP registries found none. The tools below are a candidate surface
+  derived from Klasha's documented HTTP endpoints (Klasha ships no OpenAPI, so each tool
+  cites the documentation page and endpoint it would wrap). Nothing here is operated by
+  Klasha.
+server:
+  name: klasha
+  transport: http
+  url: null
+  published: false
+auth:
+  headers:
+  - {name: x-auth-token, description: merchant public key}
+  - {name: Authorization, description: 'Bearer {{token}}'}
+  artifact: authentication/klasha-authentication.yml
+environments:
+  sandbox: https://dev.kcookery.com
+  production: https://gate.klasapps.com
+tools:
+- name: login
+  description: Exchange account credentials for a bearer token.
+  source_endpoint: 'POST /auth/account/v2/login'
+  docs: https://developers.klasha.com/overview/authentication
+- name: initiate_card_payment
+  description: Start a card payment for a supported currency gateway.
+  source_endpoint: 'POST /pay/aggregators/{gateway}/card/payment/v2'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+- name: charge_card
+  description: Charge the card after payment initiation.
+  source_endpoint: 'POST /pay/aggregators/{gateway}/charge/card/v2'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+- name: validate_charge
+  description: Validate a card charge with the PIN, OTP or 3DS challenge response.
+  source_endpoint: 'POST /pay/aggregators/{gateway}/validate/card/v2'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+- name: initiate_bank_transfer
+  description: Start a bank-transfer collection.
+  source_endpoint: 'POST /pay/aggregators/{gateway}/banktransfer/v3'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+- name: get_transaction_status
+  description: Verify the final status of a charge by transaction reference before giving value.
+  source_endpoint: 'POST /nucleus/tnx/merchant/status'
+  docs: https://developers.klasha.com/misc/transaction-status
+  read_only: true
+- name: get_collection_status
+  description: Poll the status of a virtual-account collection by bank session id.
+  source_endpoint: 'POST /nucleus/tnx/collection/status'
+  docs: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+  read_only: true
+- name: initiate_refund
+  description: Initiate a full or partial refund of a transaction.
+  source_endpoint: 'POST /nucleus/refund/initiate/v3'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+- name: get_refund_status
+  description: Look up the status of a refund.
+  source_endpoint: 'GET /nucleus/refund/status/{reference}'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+  read_only: true
+- name: get_exchange_rate
+  description: Retrieve the applicable exchange rate for a currency pair.
+  source_endpoint: 'POST /nucleus/general/exchange/'
+  docs: https://developers.klasha.com/accepting-payments/payments-api
+  read_only: true
+- name: list_banks
+  description: Fetch supported bank codes for a payout currency.
+  source_endpoint: 'GET /wallet/merchant/bank/transfer/request/banks/{currency}'
+  docs: https://developers.klasha.com/transfers/payout
+  read_only: true
+- name: create_payout
+  description: Request a payout to a bank account; payload must be Triple-DES encrypted.
+  source_endpoint: 'POST /wallet/merchant/{businessId}/bank/transfer/v2/request'
+  docs: https://developers.klasha.com/transfers/payout
+- name: get_wallet_balances
+  description: Retrieve merchant wallet balances.
+  source_endpoint: 'GET /nucleus/business/api/wallets'
+  docs: https://developers.klasha.com/transfers/payout
+  read_only: true
+- name: create_swap_quote
+  description: Generate a quote to convert between two merchant wallet currencies.
+  source_endpoint: 'POST /wallet/swap/generate/quote'
+  docs: https://developers.klasha.com/transfers/swap-api
+- name: confirm_swap
+  description: Confirm a swap quote and convert it into a transaction.
+  source_endpoint: 'POST /wallet/swap/initiate'
+  docs: https://developers.klasha.com/transfers/swap-api
+- name: get_swap_by_reference
+  description: Fetch a swap by transaction reference.
+  source_endpoint: 'GET /wallet/swap/fetch/by/reference/{transactionReference}'
+  docs: https://developers.klasha.com/transfers/swap-api
+  read_only: true
+- name: get_swap_by_token
+  description: Fetch a swap by quote token.
+  source_endpoint: 'GET /wallet/swap/fetch/by/token/{quoteToken}'
+  docs: https://developers.klasha.com/transfers/swap-api
+  read_only: true
+- name: create_virtual_account
+  description: Create a virtual account in NGN or GHS for collecting customer funds.
+  source_endpoint: 'POST /wallet/virtual/v3/business/create/account'
+  docs: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+- name: get_virtual_account
+  description: Requery an existing virtual account by email.
+  source_endpoint: 'GET /wallet/virtual/v2/account/{email}'
+  docs: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+  read_only: true
+- name: resend_webhook
+  description: Resend a webhook from the failed-sending queue for a transaction reference.
+  source_endpoint: 'GET /nucleus/tnx/webhook?reference={tx_ref}'
+  docs: https://developers.klasha.com/misc/webhook

@@ -1,0 +1,60 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.klasha.com/accepting-payments/test-payments
+docs: https://developers.klasha.com/accepting-payments/test-payments
+notes: >-
+  All values below are published verbatim by Klasha on its test-payments and parameters
+  documentation. Nothing here is invented.
+environments:
+- name: sandbox
+  label: DEV
+  base_url: https://dev.kcookery.com
+  dashboard: https://dev.dashboard.klasha.com/signup
+  source: https://developers.klasha.com/overview/parameters
+- name: production
+  label: LIVE
+  base_url: https://gate.klasapps.com
+  dashboard: https://dashboard.klasha.com/signup
+  source: https://developers.klasha.com/overview/parameters
+mode_switching:
+  mechanism: base URL selection plus an ENVIRONMENT flag in the inline JavaScript client
+  inline_flag:
+    name: ENVIRONMENT
+    values: {true: dev, false: production}
+    source: https://developers.klasha.com/accepting-payments/klasha-inline
+  keys: >-
+    Separate merchant public keys are generated per environment from the corresponding
+    dashboard (Settings -> Generate API Keys). Klasha does not publish a test/live key
+    prefix convention.
+card_expiry_note: Any future date may be used for the expiry of each test card.
+test_cards:
+  successful:
+  - {brand: Mastercard, auth: PIN, number: '5531886652142950', expiry: 09/32, cvc: '564', pin: '3310', otp: '12345'}
+  - {brand: Mastercard, auth: 3DS, number: '5438898014560229', expiry: 10/31, cvv: '564', pin: '3310', otp: '12345'}
+  - {brand: Visa, auth: 3DS, number: '4187427415564246', expiry: 09/32, cvv: '828', pin: '3310', otp: '12345'}
+  - {brand: Verve, auth: noauth, number: '5061460166976054667', expiry: 10/29, cvv: '564', pin: '3310'}
+  - {brand: Visa, auth: Address Verification (AVS), number: '4556052704172643', expiry: 09/32, cvv: '899', pin: '3310', otp: '12345'}
+  - {brand: Mastercard, auth: Pre-authentication, number: '5377283645077450', expiry: 09/31, cvv: '789', pin: '3310'}
+  failed:
+  - {brand: Mastercard, scenario: Declined (Incorrect PIN), number: '5399834697894723', expiry: 09/31, cvv: '883', pin: '3310', otp: '123456'}
+  - {brand: Mastercard, scenario: Card Fraudulent, number: '5590131743294314', expiry: 11/32, cvv: '887', pin: '3310', otp: '123456'}
+  - {brand: Mastercard, scenario: Card Declined (Address Verification), number: '5143010522339965', expiry: 08/32, cvv: '276', pin: '3310', otp: '3310'}
+  errors:
+  - {scenario: Do Not Honour, number: '5143010522339965', expiry: 08/31, cvv: '276', pin: '3310'}
+  - {scenario: Insufficient funds, number: '5258585922666506', expiry: 09/31, cvv: '883', pin: '3310', otp: '123456'}
+test_mobile_money:
+  description: Test phone number and network pairs for mobile money collection, by currency.
+  values:
+  - {currency: ZMW, phone: '260973456789', network: airtel}
+  - {currency: UGX, phone: '256753456789', network: airtel}
+  - {currency: SLL, phone: '23276123456', network: orange}
+  - {currency: XOF, phone: '221763456789', network: mtn}
+  - {currency: RWF, phone: '250733456789', network: airtel}
+  - {currency: MWK, phone: '265993456789', network: airtel}
+  - {currency: KES, phone: '254703456789', network: mpesa}
+  - {currency: CDF, phone: '243812312332', network: vodacom}
+  - {currency: CMR, phone: '237653456789', network: mtn}
+  - {currency: GHS, phone: '23354709929220', network: airtel}
+  - {currency: TZS, phone: '255712345678', network: tigo}
+test_clocks: none published
+fixtures_or_triggers: none published
