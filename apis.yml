@@ -1,25 +1,194 @@
 aid: klasha
 name: Klasha
-description: Klasha is a company surfaced as a portfolio company of seedcamp and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: 'Klasha is a cross-border payments company for emerging markets that lets
+  international businesses sell into Africa and accept payments online in local African
+  currencies. The Klasha platform covers payment collection (cards, bank transfer, USSD,
+  M-Pesa and mobile money, Klasha wallet), payouts to bank accounts and mobile money
+  wallets across Africa and to China, currency swap between merchant wallets at internal
+  Klasha rates, virtual account creation for bank-account collection, payment links,
+  and an embeddable JavaScript checkout. Developers integrate through the documented
+  REST APIs at developers.klasha.com, the Klasha Inline JavaScript library, first-party
+  web and mobile SDKs (Angular, React, Vue 2/3, iOS, Android, Flutter, Ionic, React
+  Native), or ready-made e-commerce plugins for WooCommerce, Magento 2, BigCommerce,
+  OpenCart, Ecwid, Wix and Weebly.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://klasha.com/icon.svg
 url: https://raw.githubusercontent.com/api-evangelist/klasha/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - seedcamp
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Payments
+- Cross-Border Payments
+- Africa
+- Emerging Markets
+- Mobile Money
+- Payouts
+- Foreign Exchange
+- Virtual Accounts
+- Checkout
+- Financial Services
+apis:
+- aid: klasha:payments-api
+  name: Klasha Payments API
+  description: Collect payments from customers in Africa via card, bank transfer, USSD,
+    M-Pesa, mobile money and the Klasha wallet, including charge validation, refunds
+    and exchange rates.
+  humanURL: https://developers.klasha.com/accepting-payments/payments-api
+  baseURL: https://gate.klasapps.com
+  tags:
+  - Payments
+  - Cards
+  - Mobile Money
+  - Refunds
+  properties:
+  - type: Documentation
+    url: https://developers.klasha.com/accepting-payments/payments-api
+  - type: Authentication
+    url: authentication/klasha-authentication.yml
+  - type: Sandbox
+    url: sandbox/klasha-sandbox.yml
+- aid: klasha:payout-api
+  name: Klasha Payout API
+  description: Send money locally to bank accounts and mobile money wallets across
+    Africa and to China, with bank-code lookup, account resolution, wallet balances
+    and Triple-DES encrypted transfer payloads.
+  humanURL: https://developers.klasha.com/transfers/payout
+  baseURL: https://gate.klasapps.com
+  tags:
+  - Payouts
+  - Transfers
+  - Mobile Money
+  properties:
+  - type: Documentation
+    url: https://developers.klasha.com/transfers/payout
+- aid: klasha:swap-api
+  name: Klasha Swap API
+  description: Generate a quote and swap funds between merchant wallets using internal
+    Klasha foreign-exchange rates, then fetch the resulting swap by reference or quote
+    token.
+  humanURL: https://developers.klasha.com/transfers/swap-api
+  baseURL: https://gate.klasapps.com
+  tags:
+  - Foreign Exchange
+  - Wallets
+  properties:
+  - type: Documentation
+    url: https://developers.klasha.com/transfers/swap-api
+- aid: klasha:virtual-accounts-api
+  name: Klasha Virtual Account API
+  description: Create virtual accounts on demand in NGN and GHS, receive customer funds
+    through them, requery accounts, poll collection status and pull balances and statements.
+  humanURL: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+  baseURL: https://gate.klasapps.com
+  tags:
+  - Virtual Accounts
+  - Collections
+  properties:
+  - type: Documentation
+    url: https://developers.klasha.com/bank-account-collection/virtual-account-creation
+- aid: klasha:payment-link-api
+  name: Klasha Payment Link API
+  description: Generate payment links for merchants and sub-merchants to collect payments
+    without a code integration, from the dashboard or over the API.
+  humanURL: https://developers.klasha.com/accepting-payments/payment-link/payment-link-api
+  baseURL: https://gate.klasapps.com
+  tags:
+  - Payment Links
+  - Checkout
+  properties:
+  - type: Documentation
+    url: https://developers.klasha.com/accepting-payments/payment-link/payment-link-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: TrustCenter
+  url: security/klasha-trust-center.yml
+- type: DomainSecurity
+  url: security/klasha-domain-security.yml
 - type: Website
-  url: http://klasha.com
+  url: https://www.klasha.com
+- type: DeveloperPortal
+  url: https://developers.klasha.com/
+- type: Documentation
+  url: https://developers.klasha.com/
+- type: APIReference
+  url: https://developers.klasha.com/accepting-payments/payments-api
+- type: GettingStarted
+  url: https://developers.klasha.com/integrating-klasha/getting-started
+- type: Support
+  url: https://support.klasha.com/
+- type: SignUp
+  url: https://dashboard.klasha.com/signup
+- type: Login
+  url: https://dashboard.klasha.com/auth/login
+- type: Blog
+  url: https://www.klasha.com/blog
+- type: Community
+  url: https://join.slack.com/t/klashadev/shared_invite/zt-xnnmdpo0-5Dx6gNuj9b9oiQIuKvqYgw
+- type: TermsOfService
+  url: https://www.klasha.com/legal#terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.klasha.com/legal#privacy-policy
+- type: Security
+  url: https://www.klasha.com/legal#information-security-policy
+- type: Compliance
+  url: https://www.klasha.com/compliance
+- type: StatusPage
+  url: https://status.klasha.com/
+- type: Postman
+  url: https://www.postman.com/klasha-hq
+- type: GitHubOrganization
+  url: https://github.com/klasha-apps
+- type: Authentication
+  url: authentication/klasha-authentication.yml
+- type: Packages
+  url: packages/klasha-packages.yml
+- type: SDKs
+  url: packages/klasha-packages.yml
+- type: Components
+  url: components/klasha-components.yml
+- type: Sandbox
+  url: sandbox/klasha-sandbox.yml
+- type: Conventions
+  url: conventions/klasha-conventions.yml
+- type: ErrorCatalog
+  url: errors/klasha-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/klasha-lifecycle.yml
+- type: Webhooks
+  url: asyncapi/klasha-webhooks.yml
+- type: DataModel
+  url: data-model/klasha-data-model.yml
+- type: Conformance
+  url: conformance/klasha-conformance.yml
+- type: LLMsTxt
+  url: llms/klasha-llms.txt
+- type: MCPServer
+  url: mcp/klasha-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
