@@ -43,6 +43,18 @@ tags:
 - Foreign Exchange
 - Virtual Accounts
 - Checkout
+- Financial-Services
+tags_raw:
+- Company
+- Payments
+- Cross-Border Payments
+- Africa
+- Emerging Markets
+- Mobile Money
+- Payouts
+- Foreign Exchange
+- Virtual Accounts
+- Checkout
 - Financial Services
 apis:
 - aid: klasha:payments-api
@@ -98,6 +110,9 @@ apis:
   humanURL: https://developers.klasha.com/bank-account-collection/virtual-account-creation
   baseURL: https://gate.klasapps.com
   tags:
+  - Virtual Accounts
+  - Collection
+  tags_raw:
   - Virtual Accounts
   - Collections
   properties:
