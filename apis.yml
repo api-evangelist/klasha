@@ -11,6 +11,17 @@ description: 'Klasha is a cross-border payments company for emerging markets tha
   web and mobile SDKs (Angular, React, Vue 2/3, iOS, Android, Flutter, Ionic, React
   Native), or ready-made e-commerce plugins for WooCommerce, Magento 2, BigCommerce,
   OpenCart, Ecwid, Wix and Weebly.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
