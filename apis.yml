@@ -45,6 +45,9 @@ x-backed-by:
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
+x-docs-platform: gitbook
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-10-03
 tags:
 - Company
 - Payments
@@ -56,7 +59,7 @@ tags:
 - Foreign Exchange
 - Virtual Accounts
 - Checkout
-- Financial-Services
+- Financial Services
 tags_raw:
 - Company
 - Payments
@@ -69,6 +72,7 @@ tags_raw:
 - Virtual Accounts
 - Checkout
 - Financial Services
+- Financial-Services
 apis:
 - aid: klasha:payments-api
   name: Klasha Payments API
