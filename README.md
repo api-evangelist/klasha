@@ -64,50 +64,115 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Klasha is a cross-border payments company for emerging markets that lets international businesses sell into Africa and accept payments online in local African currencies. The platform covers payment collection (cards, bank transfer, USSD, M-Pesa and mobile money, Klasha wallet), payouts to bank accounts and mobile money wallets across Africa and to China, currency swap between merchant wallets, virtual account creation, payment links, and an embeddable JavaScript checkout.
+Klasha is a cross-border payments company for emerging markets that lets international businesses sell into Africa and accept payments online in local African currencies. The Klasha platform covers payment collection (cards, bank transfer, USSD, M-Pesa and mobile money, Klasha wallet), payouts to bank accounts and mobile money wallets across Africa and to China, currency swap between merchant wallets at internal Klasha rates, virtual account creation for bank-account collection, payment links, and an embeddable JavaScript checkout. Developers integrate through the documented REST APIs at developers.klasha.com, the Klasha Inline JavaScript library, first-party web and mobile SDKs (Angular, React, Vue 2/3, iOS, Android, Flutter, Ionic, React Native), or ready-made e-commerce plugins for WooCommerce, Magento 2, BigCommerce, OpenCart, Ecwid, Wix and Weebly.
 
-- Website: https://www.klasha.com
-- Developer portal: https://developers.klasha.com/
-- Status: https://status.klasha.com/
-- Dashboard: https://dashboard.klasha.com/signup
+**Areas:** Company · Payments · Cross-Border Payments · Africa · Emerging Markets · Mobile Money · Payouts · Foreign Exchange · Virtual Accounts · Checkout · Financial Services
 
-Backed by: seedcamp
+## Klasha on APIs.io
 
-## APIs
+Everything profiled for Klasha is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/klasha/](https://apis.io/providers/klasha/)** — or go straight to one of the APIs or properties below.
 
-| API | Docs |
+### APIs (5)
+
+- [Klasha Payments API](https://apis.io/apis/klasha/payments-api/) — Collect payments from customers in Africa via card, bank transfer, USSD, M-Pesa, mobile money and the Klasha wallet, including charge validation, refunds…
+- [Klasha Payout API](https://apis.io/apis/klasha/payout-api/) — Send money locally to bank accounts and mobile money wallets across Africa and to China, with bank-code lookup, account resolution, wallet balances and…
+- [Klasha Swap API](https://apis.io/apis/klasha/swap-api/) — Generate a quote and swap funds between merchant wallets using internal Klasha foreign-exchange rates, then fetch the resulting swap by reference or quote…
+- [Klasha Virtual Account API](https://apis.io/apis/klasha/virtual-accounts-api/) — Create virtual accounts on demand in NGN and GHS, receive customer funds through them, requery accounts, poll collection status and pull balances and…
+- [Klasha Payment Link API](https://apis.io/apis/klasha/payment-link-api/) — Generate payment links for merchants and sub-merchants to collect payments without a code integration, from the dashboard or over the API.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Klasha Webhooks](https://apis.io/asyncapis/klasha/klasha-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [klasha](https://apis.io/servers/klasha/klasha/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Klasha Authentication](https://apis.io/security/klasha/klasha-authentication/)
+- [Klasha Domain Security](https://apis.io/security/klasha/klasha-domain-security/)
+- [Klasha Trust Center](https://apis.io/security/klasha/klasha-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.klasha.com)
+- [Documentation](https://developers.klasha.com/)
+- [Getting started](https://developers.klasha.com/integrating-klasha/getting-started)
+- [API reference](https://developers.klasha.com/accepting-payments/payments-api)
+- [Sign up](https://dashboard.klasha.com/signup)
+- [Support](https://support.klasha.com/)
+- [Blog](https://www.klasha.com/blog)
+- [Security](https://www.klasha.com/legal#information-security-policy)
+- [Compliance](https://www.klasha.com/compliance)
+- [Terms of service](https://www.klasha.com/legal#terms-and-conditions)
+- [Privacy policy](https://www.klasha.com/legal#privacy-policy)
+- [GitHub](https://github.com/klasha-apps)
+- [Status](https://status.klasha.com/)
+
+## API Evangelist rating
+
+**Kin Score 51.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
 |---|---|
-| Klasha Payments API | https://developers.klasha.com/accepting-payments/payments-api |
-| Klasha Payout API | https://developers.klasha.com/transfers/payout |
-| Klasha Swap API | https://developers.klasha.com/transfers/swap-api |
-| Klasha Virtual Account API | https://developers.klasha.com/bank-account-collection/virtual-account-creation |
-| Klasha Payment Link API | https://developers.klasha.com/accepting-payments/payment-link/payment-link-api |
+| Discoverability | 78.6 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 75.6 |
+| Access clarity | 43.4 |
 
-## Artifacts in this repo
+**Agent readiness 23.6** — agent-aware
 
-| Artifact | Path | Method |
-|---|---|---|
-| Authentication | `authentication/klasha-authentication.yml` | searched |
-| Packages / SDKs | `packages/klasha-packages.yml` | searched |
-| Embedded components | `components/klasha-components.yml` | searched |
-| Sandbox / test data | `sandbox/klasha-sandbox.yml` | searched |
-| API conventions | `conventions/klasha-conventions.yml` | searched |
-| Error catalog | `errors/klasha-problem-types.yml` | searched |
-| Lifecycle | `lifecycle/klasha-lifecycle.yml` | searched |
-| Webhooks | `asyncapi/klasha-webhooks.yml` | searched |
-| Data model | `data-model/klasha-data-model.yml` | searched |
-| Conformance | `conformance/klasha-conformance.yml` | searched |
-| llms.txt | `llms/klasha-llms.txt` | searched (verbatim) |
-| Trust center | `security/klasha-trust-center.yml` | searched |
-| Domain security | `security/klasha-domain-security.yml` | probed |
-| Well-known | `well-known/klasha-well-known.yml` | searched (none published) |
-| MCP server | `mcp/klasha-mcp.yml` | derived (candidate) |
-| Agent skills | `skills/` | generated |
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
 
-## Notes
+**Regulatory alignment 39.3** — Payments
 
-Klasha publishes no OpenAPI, AsyncAPI, GraphQL or Protobuf description, no `/.well-known/`
-discovery documents, no dated changelog, no CLI, no OAuth scope surface, no published
-rate limits and no vulnerability disclosure program. It does publish PCI DSS compliance
-and ISO 27001 certification, a status page, a real `llms.txt`, first-party web and mobile
-SDKs, e-commerce plugins, and a documented webhook surface.
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/klasha/](https://apis.io/providers/klasha/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Klasha: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/klasha/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
